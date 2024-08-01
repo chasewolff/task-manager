@@ -29,4 +29,13 @@ public class TaskService {
 	public Optional<Task> findTaskById(Long id) {
 		return taskRepository.findById(id);
 	}
+	
+	public boolean deleteTaskById(Long id) {
+        if (taskRepository.existsById(id)) {
+            taskRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

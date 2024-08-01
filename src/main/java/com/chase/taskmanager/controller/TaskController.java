@@ -36,6 +36,16 @@ public class TaskController {
         return taskService.save(task);
     }
     
+    // Delete a task
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
+        if (taskService.deleteTaskById(id)) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
     // Find the task by status
     @GetMapping("/status/{status}")
     public List<Task> getTasksByStatus(@PathVariable String status) {
