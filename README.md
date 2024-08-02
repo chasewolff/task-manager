@@ -1,6 +1,6 @@
 # Task Manager
 
-Task Manager is a simple Spring Boot application for managing tasks. It provides a RESTful API for creating, reading, updating, and deleting tasks. You will need to create your own database to match this schema:
+Task Manager is a simple Spring Boot application for managing tasks. It provides a RESTful API for creating, reading, updating, and deleting tasks.
 
 ## Table of Contents
 
