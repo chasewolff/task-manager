@@ -108,6 +108,7 @@ mvn test
 
 Contributions are welcome! Please open an issue or submit a PR for improvements or new features.
 Here's some ideas if you're looking to expand (these come from my TODO list):
+- [ ] Add Data Transfer Object classes to avoid issues with lazy loading and serialization.
 - [ ] Add pagination (10 tasks per 'page') and sorting (sorting by date or alphabetized title).
 - [ ] Create a front-end interface (Haven't decided on which to go with, though I'm leaning toward React for a learning experience. If you have any ideas, suggest away!)
 - [ ] Improve error handling and validation for API endpoints.

@@ -1,6 +1,8 @@
 package com.chase.taskmanager.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.Date;
 
 @Entity
@@ -21,6 +23,11 @@ public class Task {
 	
 	@Temporal(TemporalType.DATE)
 	private Date dueDate;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	@JsonBackReference
+	private User user;
 	
 	// Getters Setters
 	
@@ -62,6 +69,14 @@ public class Task {
 	
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

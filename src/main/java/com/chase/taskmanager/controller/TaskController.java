@@ -52,7 +52,14 @@ public class TaskController {
         return taskService.findByStatus(status);
     }
     
+    // Find task by user
+    @GetMapping("/user/{user}")
+    public List<Task> getTasksByUser(@PathVariable String user) {
+    	return taskService.findByUser(user);
+    }
+    
     // Update a task
+    // TODO: User should be able to update just parts of a task and not all of it.
     @PutMapping("/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task updatedTask) {
         Optional<Task> task = taskService.findTaskById(id);

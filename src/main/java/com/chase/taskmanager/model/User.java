@@ -4,14 +4,17 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Entity
-@Table(name = "\"user\"")
+@Table(name = "users")
 public class User implements UserDetails, Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,6 +28,10 @@ public class User implements UserDetails, Serializable {
     private String password;
     @Column(nullable = false)
     private String role;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Task> tasksList;
 
     // Getters Setters
     public Long getId() {
@@ -82,5 +89,13 @@ public class User implements UserDetails, Serializable {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    
+    public List<Task> getTasksList(){
+    	return tasksList;
+    }
+    
+    public void setTasksList(List<Task> tasksList) {
+    	this.tasksList = tasksList;
     }
 }
